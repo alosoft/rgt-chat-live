@@ -14,7 +14,6 @@ if (process.env.NODE_ENV === 'production') {
 } else {
     require('dotenv').config();
 }
-console.log('^^^^^^^^^^^^^^^^', process.env.AUTH0_DOMAIN)
 
 const io = socketio(server, {
     cors: {
@@ -41,9 +40,7 @@ io.on('connection', (socket) => {
 });
 
 io.on('disconnect', socket => {
-    console.log('a user disconnected')
 })
 
 server.listen(process.env.PORT || 5000, () => {
-    console.log('listening on *:5000');
 });

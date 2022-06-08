@@ -16,7 +16,6 @@ class Chat extends Component {
     constructor(props) {
         super(props);
         const { currentUser } = this.props;
-        console.log('poppppp=> ', currentUser)
 
         this.socket = io(`http://${window.location.hostname}:5000`, {
             query: {
@@ -24,10 +23,8 @@ class Chat extends Component {
             }
         });
         this.socket.on('message-send', data => {
-            console.log('data from socket', data)
         })
         this.socket.on('disconnect', data => {
-            // alert('user disconnected on frontend')
         })
         this.socket.on('user-settings', data => {
             this.props.fetchBlockers(currentUser)
@@ -36,15 +33,11 @@ class Chat extends Component {
 
     render() {
         const onRedirectCallback = (appState) => {
-            console.log(window.location.pathname);
-            console.log('app state', appState);
-            // navigate('/chat');
         };
 
         const { currentUser, selectedUser, setSelectedUser, fetchBlocked, notify, disableNotify, fetchBlockers } = this.props;
         fetchBlocked(currentUser);
         fetchBlockers();
-        console.log('currentUser', currentUser);
         if (selectedUser) {
             setSelectedUser(selectedUser)
         }
@@ -83,7 +76,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state, props) => {
-    console.log('state in chat', state)
     return {
         currentUser: state.auth.currentUser,
         selectedUser: state.chat.selectedUser,

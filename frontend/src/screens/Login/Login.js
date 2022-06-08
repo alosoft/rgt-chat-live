@@ -7,8 +7,7 @@ import { useDispatch } from 'react-redux';
 import CircularProgressBar from '../../components/CircularProgressBar/CircularProgressBar';
 
 function Login() {
-    const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0();
-    console.log('user account=-==========>', user)
+    const { loginWithRedirect, user, isAuthenticated, isLoading } = useAuth0();
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -29,7 +28,6 @@ function Login() {
                 </div>
                 : null}
             <button onClick={() => loginWithRedirect()} className="login__button" disabled={isAuthenticated}>Login</button>
-            {/* <button onClick={() => logout({ returnTo: window.location.origin })} className="login__button"> Logout</button> */}
         </div>
     )
 }

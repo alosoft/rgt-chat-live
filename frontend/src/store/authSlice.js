@@ -5,7 +5,6 @@ import { fetchMyBlockers, fetchSettings, saveSettings } from "../utils/firebase"
 export const blockUser = createAsyncThunk('auth/blockUser', (data, action) => {
     const currentUser = action.getState().auth.currentUser;
     return saveSettings(currentUser, data).then(results => {
-        console.log('data fetch from blocked', results)
         return data;
     })
 })

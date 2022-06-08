@@ -3,12 +3,8 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDoc, getDocs, doc, deleteDoc, setDoc, updateDoc, where, query } from "firebase/firestore";
 import _ from 'lodash'
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
+    apiKey: "AIzaSyBfKtmAbTIIbNcljhbrBmNYYH9Rg8HkoNU",
     authDomain: "rgt-chat-app-a57ae.firebaseapp.com",
     projectId: "rgt-chat-app-a57ae",
     storageBucket: "rgt-chat-app-a57ae.appspot.com",
@@ -34,10 +30,11 @@ export const fetchSettings = (currentUser) => {
     try {
         const currentUserId = currentUser.sub || currentUser.user_id;
         return getDocs(query(collection(db, 'blocked'),
-            where('owner', '==', currentUserId)
+        where('owner', '==', currentUserId)
         ))
     } catch (error) {
         console.log('error fetching settings', error)
+        return error;
     }
 }
 
@@ -45,10 +42,11 @@ export const fetchMyBlockers = (currentUser) => {
     try {
         const currentUserId = currentUser.sub || currentUser.user_id;
         return getDocs(query(collection(db, 'blocked'),
-            where('blocked', '==', currentUserId)
+        where('blocked', '==', currentUserId)
         ))
     } catch (error) {
         console.log('error fetching settings', error)
+        return error;
     }
 }
 
@@ -59,8 +57,8 @@ export const saveSettings = (currentUser, data) => {
         const blockedId = blocked.sub || blocked.user_id;
         if (data.blocked) {
             return getDocs(query(collection(db, 'blocked'),
-                where('blocked', '==', blockedId),
-                where('owner', '==', currentUserId)
+            where('blocked', '==', blockedId),
+            where('owner', '==', currentUserId)
             )).then(results => {
                 console.log('results fro blocked===========', results)
                 if (results.docs.length > 0) {
@@ -76,6 +74,7 @@ export const saveSettings = (currentUser, data) => {
         }
     } catch (error) {
         console.log('error setting settings', error)
+        return error;
     }
 }
 

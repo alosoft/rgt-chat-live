@@ -14,10 +14,6 @@ class ChatBox extends Component {
         this.props.socket.on('chat-message', this.handleMessage)
     }
 
-    componentWillReceiveProps(props) {
-        console.log('new props from chatbox', props)
-    }
-
     handleMessage(message) {
         const { addChat, chats, currentUser, selectedUser } = this.props;
         if (message.receiver !== (currentUser.user_id || currentUser.sub) && (selectedUser.user_id || selectedUser.sub) === message.sender)
@@ -37,7 +33,6 @@ class ChatBox extends Component {
 
     render() {
         const { chats, currentUser } = this.props;
-        console.log('about to render chatbox')
         return <>
             {_.uniqBy(chats, 'date').map(message => <ChatItem owner={message.sender === (currentUser.sub || currentUser.user_id)} key={message.id} chat={message} />)}
         </>
@@ -59,7 +54,6 @@ const mapStateToProps = (state, ownProps) => {
     const room2 = `${currentSelectedUserId}-${currentUserId}`;
 
     const chats = state.chat.rooms[room1] || state.chat.rooms[room2] || [];
-    console.log('in mapStateToPRops in chatbox')
     return {
         ...ownProps,
         chats,

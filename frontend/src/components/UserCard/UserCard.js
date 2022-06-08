@@ -8,7 +8,6 @@ const UserCard = ({ user, profile }) => {
     const dispatch = useDispatch();
     const loading = useSelector(state => state.auth.loading)
     const blockedUserIds = useSelector(state => state.auth.blocked)
-    console.log('blocked users =============', blockedUserIds)
 
     const userId = user.sub || user.user_id;
     const blocked = blockedUserIds.filter(item => item === userId).length > 0;

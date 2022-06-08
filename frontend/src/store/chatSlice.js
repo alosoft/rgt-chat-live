@@ -10,7 +10,6 @@ function createRoom2(message) {
 
 export const storeChat = createAsyncThunk('chat/storeChat', (message) => {
     return addData(message).then(results => {
-        console.log('results from firebase storeChat', results);
         return message;
     })
 })
@@ -18,7 +17,6 @@ export const storeChat = createAsyncThunk('chat/storeChat', (message) => {
 export const setSelectedUser = createAsyncThunk('chat/fetchChat', (user, action) => {
     const currentUser = action.getState().auth.currentUser;
     return fetchData(currentUser, user).then(results => {
-        console.log('something came ', results);
         return {
             user,
             chats: results
@@ -76,7 +74,6 @@ const chatSlice = createSlice({
             state.error = 'Failed to store chat'
         });
         builder.addCase(storeChat.fulfilled, (state, action) => {
-            console.log('data from fulfilled', action)
             const room = createRoom(action.payload);
             const room2 = createRoom2(action.payload);
             if (room in state.rooms) {

@@ -17,7 +17,6 @@ class LeftPane extends Component {
 
   handleUserOnline(user) {
     const { socket, currentUser, onlineUsers, setOnlineUser } = this.props;
-    console.log('props in handle online', this.props)
 
 
     if (!user.email)
@@ -37,7 +36,6 @@ class LeftPane extends Component {
     }
 
     if (currentUser.email) {
-      console.log('sending wave....', currentUser)
       socket.emit('user-wave', currentUser)
     }
     setOnlineUser(user)
@@ -49,8 +47,7 @@ class LeftPane extends Component {
   // }
 
   render() {
-    const { users, isLoading, currentUser, onlineUsers } = this.props;
-    console.log('online users', onlineUsers)
+    const { currentUser, onlineUsers } = this.props;
     return (
       <div className='pane'>
         {

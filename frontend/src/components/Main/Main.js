@@ -12,8 +12,6 @@ class Main extends Component {
 
     render() {
         const { selectedUser, socket, saving, loading, checkBlockedChat, blockedMe } = this.props
-        console.log('socket=>', socket)
-        console.log('selected user', selectedUser)
         blockedMe.forEach(id => {
             if (selectedUser) {
                 const user_id = selectedUser.user_id || selectedUser.sub;

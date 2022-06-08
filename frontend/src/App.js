@@ -13,9 +13,6 @@ class App extends Component {
   render() {
 
     const onRedirectCallback = (appState) => {
-      console.log(window.location.pathname);
-      console.log('app state', appState);
-      // navigate('/chat');
     };
 
     return <Auth0Provider
@@ -35,7 +32,6 @@ App.propTypes = {
 
 
 export default connect((state, props) => {
-  console.log('state from App.js', state)
   return {}
 }, {
   setUser

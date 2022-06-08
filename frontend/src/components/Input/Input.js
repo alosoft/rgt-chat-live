@@ -37,7 +37,6 @@ const Input = ({ socket }) => {
             sender: currentUser.user_id || currentUser.sub,
             receiver: selectedUser.user_id || selectedUser.sub
         };
-        console.log('new message', msg)
         // dispatch(chatSlice.actions.addChat(msg))
         dispatch(storeChat(msg))
         socket.emit('send-chat-message', msg);
