@@ -26,7 +26,6 @@ const UserCard = ({ user, profile }) => {
         </div>
         <div className="usercard__profile">
             <p className="usercard__profile-name">{user.name}</p>
-            <p className="usercard__profile-desc">Last Login: {new Date(user.last_login).toUTCString()}</p>
         </div>
         {
             profile ?
