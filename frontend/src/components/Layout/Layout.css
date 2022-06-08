@@ -1,0 +1,7 @@
+.chat{
+    /* width: calc(100% - 15rem); */
+    height: calc(100vh - 4rem);
+    display: flex;
+    gap: 1rem;
+    padding: 2rem;
+}

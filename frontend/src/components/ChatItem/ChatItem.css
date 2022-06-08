@@ -1,0 +1,10 @@
+.chat__item{
+    width: 60%;
+    padding: .5rem;
+    background: rgb(198, 196, 196);
+    border-radius: .4rem;
+}
+
+.chat__item-content{
+    color: white;
+}

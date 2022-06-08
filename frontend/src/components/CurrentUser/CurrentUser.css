@@ -1,0 +1,24 @@
+.currentuser{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.currentuser-img {
+    width: 4rem;
+    height: 4rem;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.currentuser-img>img {
+    width: 100%;
+    height: 100%;
+}
+
+.currentuser-logout{
+    padding: .5rem 1rem;
+    cursor: pointer;
+}

@@ -1,0 +1,23 @@
+.login {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login__button {
+    padding: .5rem .8rem;
+    font-weight: bold;
+    font-size: .9rem;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: .2rem;
+    box-shadow: 0 .1rem .1rem .06rem rgba(0, 0, 0, 0.2);
+}
+
+.login__progress{
+    height: 3rem;
+}
