@@ -6,11 +6,15 @@ const socketio = require("socket.io");
 
 
 
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-    console.log('^^^^^^^^^^^^^^^^', process.env.AUTH0_DOMAIN)
+if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'))
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'frontend/build', 'index.html'))
+    })
+} else {
+    require('dotenv').config();
 }
+console.log('^^^^^^^^^^^^^^^^', process.env.AUTH0_DOMAIN)
 
 const io = socketio(server, {
     cors: {
