@@ -19,9 +19,9 @@ const io = socketio(server, {
     }
 })
 
-app.get('/', (req, res) => {
-    res.send('boom')
-});
+// app.get('/', (req, res) => {
+//     res.send('boom')
+// });
 
 io.on('connection', (socket) => {
     socket.on('send-chat-message', message => {
