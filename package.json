@@ -10,7 +10,7 @@
     "heroku-postbuild": "npm run install-client && npm run build",
     "start": "node index.js",
     "client": "cd frontend && npm run start",
-    "dev": "concurrently -n \"nodemon index.js\" \"cd frontend && npm start\" "
+    "dev": "concurrently \"nodemon index.js\" \"cd frontend && npm start\" "
   },
   "author": "",
   "license": "ISC",

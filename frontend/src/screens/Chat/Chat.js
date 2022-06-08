@@ -16,8 +16,9 @@ class Chat extends Component {
     constructor(props) {
         super(props);
         const { currentUser } = this.props;
-
-        this.socket = io(`http://${window.location.hostname}:5000`, {
+        const production = process.env.NODE_ENV === 'production';
+        const port = process.env.PORT || '5000';
+        this.socket = io(`${production ? 'https' : 'http'}://${window.location.hostname}:${port}`, {
             query: {
                 ...currentUser
             }
@@ -71,7 +72,7 @@ const mapDispatchToProps = (dispatch) => {
         setSelectedUser: (user) => dispatch(setSelectedUser(user)),
         fetchBlocked: (user) => dispatch(fetchBlocked(user)),
         fetchBlockers: () => dispatch(fetchBlockers('')),
-        disableNotify: ()=> dispatch(authSlice.actions.removeNotify())
+        disableNotify: () => dispatch(authSlice.actions.removeNotify())
     }
 }
 
