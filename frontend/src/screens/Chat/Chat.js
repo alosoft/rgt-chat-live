@@ -18,7 +18,8 @@ class Chat extends Component {
         const { currentUser } = this.props;
         const production = process.env.NODE_ENV === 'production';
         const port = process.env.PORT || '5000';
-        this.socket = io(`${production ? 'https' : 'http'}://${window.location.hostname}:${port}`, {
+        const url = production ? window.location.origin : `${window.location.hostname}:${port}`
+        this.socket = io(url, {
             query: {
                 ...currentUser
             }
