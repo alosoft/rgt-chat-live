@@ -9,3 +9,5 @@
 **Third Party Services**
 - Firebase Firestore as Database
 - Auth0 as Authentication System
+
+Live URL: [Live Chat](https://rgt-chatapp-live.herokuapp.com/)
