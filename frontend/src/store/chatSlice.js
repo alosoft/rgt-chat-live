@@ -35,7 +35,8 @@ const chatSlice = createSlice({
         rooms: {},
         saving: false,
         error: '',
-        loading: false
+        loading: false,
+        showMenu: true
     },
     reducers: {
         setSelectedUser(state, action) {
@@ -63,6 +64,9 @@ const chatSlice = createSlice({
                 localStorage.removeItem('SELECTED_USER')
                 state.selectedUser = {}
             }
+        },
+        setMenuVisibility(state, action) {
+            state.showMenu = action.payload
         }
     },
     extraReducers: builder => {

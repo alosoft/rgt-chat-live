@@ -47,9 +47,11 @@ class LeftPane extends Component {
   // }
 
   render() {
-    const { currentUser, onlineUsers } = this.props;
+    const { currentUser, onlineUsers, showMenu, setMenu } = this.props;
+    console.log('menu stat', showMenu)
     return (
-      <div className='pane'>
+      <div className={`pane ${showMenu ? 'show' : null}`}>
+        <button onClick={() => setMenu(!showMenu)} className="pane__close">Close Menu</button>
         {
           onlineUsers.length > 0 ? _.uniqBy(onlineUsers, 'name').filter(user => user.email !== currentUser.email).map(user => <UserCard user={user} key={user.user_id || user.sub} />)
             : <p>No users online</p>
@@ -72,14 +74,16 @@ const mapStateToProps = (state, ownProps) => {
     users: state.users.users,
     isLoading: state.users.loading,
     onlineUsers: filtered,
-    blockedMe: state.auth.blockedMe
+    blockedMe: state.auth.blockedMe,
+    showMenu: state.chat.showMenu
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     // getUsers: () => dispatch(fetchUser())
-    setOnlineUser: (user) => dispatch(chatSlice.actions.setOnlineUser(user))
+    setOnlineUser: (user) => dispatch(chatSlice.actions.setOnlineUser(user)),
+    setMenu: (show) => dispatch(chatSlice.actions.setMenuVisibility(show))
   }
 }
 

@@ -18,6 +18,15 @@
     overflow: scroll;
 }
 
-.main__instruction{
+.main__instruction {
     margin: auto auto;
+}
+
+@media screen and (max-width: 54rem) {
+    .main{
+        flex: auto;
+    }
+    .main__chat{
+        padding: unset;
+    }
 }

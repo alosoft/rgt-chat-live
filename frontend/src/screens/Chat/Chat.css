@@ -1,0 +1,25 @@
+.chat__mobile-menu{
+    width: 2rem;
+    display: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 54rem) {
+    .chat__wrapper{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat__menu-wrapper{
+        display: flex;
+        gap: .8rem;
+        padding-top: 1rem;
+    }
+    
+    .chat__mobile-menu{
+        width: 2rem;
+        display: block;
+    }
+}
+

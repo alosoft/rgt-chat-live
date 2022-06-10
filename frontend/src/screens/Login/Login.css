@@ -16,8 +16,13 @@
     border: none;
     border-radius: .2rem;
     box-shadow: 0 .1rem .1rem .06rem rgba(0, 0, 0, 0.2);
+    margin-top: 1rem;
 }
 
 .login__progress{
     height: 3rem;
+}
+
+@media screen and (max-width: 54rem) {
+    
 }

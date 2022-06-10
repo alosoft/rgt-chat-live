@@ -1,8 +1,34 @@
-.pane{
+.pane {
     display: flex;
     flex-direction: column;
     /* flex: 1; */
     height: 100;
     /* background: brown; */
     gap: .2rem;
+}
+
+.pane__close {
+    display: none;
+}
+
+@media screen and (max-width: 54rem) {
+    .pane {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgb(39, 37, 37);
+        bottom: 0;
+        z-index: 22;
+        display: none;
+        transition: all ease-in .5s;
+    }
+
+    .pane__close {
+        display: block;
+        padding-block: .3rem;
+    }
+}
+
+.show {
+    display: flex;
 }

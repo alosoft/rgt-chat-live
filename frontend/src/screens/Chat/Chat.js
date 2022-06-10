@@ -4,12 +4,13 @@ import Layout from '../../components/Layout/Layout';
 import LeftPane from '../../components/LeftPane/LeftPane';
 import Main from '../../components/Main/Main';
 import io from 'socket.io-client';
-import { setSelectedUser } from '../../store/chatSlice';
+import chatSlice, { setSelectedUser } from '../../store/chatSlice';
 import CurrentUser from '../../components/CurrentUser/CurrentUser';
 import { Auth0Provider, useAuth0, User } from "@auth0/auth0-react";
 import config from '../../utils/config';
 import authSlice, { fetchBlocked, fetchBlockers } from '../../store/authSlice';
-
+import './Chat.css';
+import menu from '../../menu.svg'
 
 class Chat extends Component {
 
@@ -37,7 +38,7 @@ class Chat extends Component {
         const onRedirectCallback = (appState) => {
         };
 
-        const { currentUser, selectedUser, setSelectedUser, fetchBlocked, notify, disableNotify, fetchBlockers } = this.props;
+        const { currentUser, selectedUser, setSelectedUser, fetchBlocked, notify, disableNotify, fetchBlockers, showMenu, setMenuState } = this.props;
         fetchBlocked(currentUser);
         fetchBlockers();
         if (selectedUser) {
@@ -58,8 +59,11 @@ class Chat extends Component {
             >
                 <Layout>
                     <LeftPane socket={this.socket} />
-                    <div>
-                        <CurrentUser />
+                    <div className='chat__wrapper'>
+                        <div className="chat__menu-wrapper">
+                            <img onClick={() => setMenuState(!showMenu)} className='chat__mobile-menu' src={menu} alt='menu' />
+                            <CurrentUser />
+                        </div>
                         <Main socket={this.socket} />
                     </div>
                 </Layout>
@@ -73,7 +77,8 @@ const mapDispatchToProps = (dispatch) => {
         setSelectedUser: (user) => dispatch(setSelectedUser(user)),
         fetchBlocked: (user) => dispatch(fetchBlocked(user)),
         fetchBlockers: () => dispatch(fetchBlockers('')),
-        disableNotify: () => dispatch(authSlice.actions.removeNotify())
+        disableNotify: () => dispatch(authSlice.actions.removeNotify()),
+        setMenuState: (show) => dispatch(chatSlice.actions.setMenuVisibility(show))
     }
 }
 
@@ -82,6 +87,7 @@ const mapStateToProps = (state, props) => {
         currentUser: state.auth.currentUser,
         selectedUser: state.chat.selectedUser,
         notify: state.auth.notify,
+        showMenu: state.chat.showMenu,
         ...props
     }
 }
