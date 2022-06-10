@@ -23,6 +23,10 @@
     height: 3rem;
 }
 
+.login__welcome{
+    text-align: center;
+}
+
 @media screen and (max-width: 54rem) {
     
 }

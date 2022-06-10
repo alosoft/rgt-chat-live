@@ -36,7 +36,7 @@ const chatSlice = createSlice({
         saving: false,
         error: '',
         loading: false,
-        showMenu: true
+        showMenu: false
     },
     reducers: {
         setSelectedUser(state, action) {
